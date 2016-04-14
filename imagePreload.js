@@ -1,9 +1,9 @@
 angular.module('totalmedial.imagePreload',[])
 
-.factory('imagePreload', function($q) {
+.factory('imagePreload', ['$q', function($q) {
 	return function(url) {
-		var deffered = $q.defer(),
-		image = new Image();
+		var deffered = $q.defer();
+		var image = new Image();
 
 		image.src = url;
 
@@ -12,7 +12,6 @@ angular.module('totalmedial.imagePreload',[])
 		} else {
 			
 			image.addEventListener('load', function() {
-				console.log('load complete');
 				deffered.resolve();
 			});
 			
@@ -23,12 +22,12 @@ angular.module('totalmedial.imagePreload',[])
 
 		return deffered.promise;
 	}
-})
+}])
 
 /**
  * <imagepreload url="IMAGE_URL" loadcomplete="doSomething()"></imagepreload>
  */
-.directive('imagepreload', function(imagePreload) {
+.directive('imagepreload', ['imagePreload',function(imagePreload) {
 	return {
 		restrict: 'E',
 		scope : {
@@ -43,4 +42,45 @@ angular.module('totalmedial.imagePreload',[])
 			});
 		}
 	};
-});
+}])
+
+/**
+ * Use this on img ng-src elements, i.e.:
+ * <img ng-src="{{my_image_url}}" ngsrcpreload="doSomething()" />
+ */
+.directive('ngsrcpreload',[ 'imagePreload', function(imagePreload) {
+	return {
+		restrict : 'A',
+		scope : {
+			url: '@ngSrc',
+			loadcomplete : '&ngsrcpreload'
+		},
+		link: function(scope, element, attrs) {
+			scope.$watch('url', function() {
+				imagePreload(scope.url).then(function(){
+					scope.loadcomplete();
+				});
+			});
+		}
+	}
+}])
+
+/**
+ * Use this on img src elements, i.e.:
+ * <img src="IMAGE_URL" srcpreload="doSomething()" />
+ */
+.directive('srcpreload',[ 'imagePreload', function(imagePreload) {
+	return {
+		restrict : 'A',
+		scope : {
+			url: '@src',
+			loadcomplete : '&srcpreload'
+		},
+		link: function(scope, element, attrs) {
+
+			imagePreload(scope.url).then(function(){
+				scope.loadcomplete();
+			});
+		}
+	}
+}]);
