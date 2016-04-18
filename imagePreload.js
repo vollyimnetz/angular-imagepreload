@@ -21,7 +21,7 @@ angular.module('totalmedial.imagePreload',[])
 		}
 
 		return deffered.promise;
-	}
+	};
 }])
 
 /**
@@ -62,7 +62,7 @@ angular.module('totalmedial.imagePreload',[])
 				});
 			});
 		}
-	}
+	};
 }])
 
 /**
@@ -82,5 +82,5 @@ angular.module('totalmedial.imagePreload',[])
 				scope.loadcomplete();
 			});
 		}
-	}
+	};
 }]);
