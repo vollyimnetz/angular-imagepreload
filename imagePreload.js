@@ -35,8 +35,6 @@ angular.module('totalmedial.imagePreload',[])
 			loadcomplete : '&'
 		},
 		link: function(scope, element, attrs) {
-			element.hide();
-			
 			imagePreload(scope.url).then(function(){
 				scope.loadcomplete();
 			});
