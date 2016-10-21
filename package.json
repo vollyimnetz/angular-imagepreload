@@ -1,0 +1,23 @@
+{
+  "name": "angular-imagepreload",
+  "version": "1.0.0",
+  "description": "Just a simple imagepreload-directive.",
+  "main": "imagePreload.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vollyimnetz/imagepreload.git"
+  },
+  "keywords": [
+    "angular",
+    "imageloading"
+  ],
+  "author": "Volkmar Kantor",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/vollyimnetz/imagepreload/issues"
+  },
+  "homepage": "https://github.com/vollyimnetz/imagepreload#readme"
+}
