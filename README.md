@@ -4,6 +4,10 @@ Simple Angular directive for image preloading. You can pass a custom function to
 ## Install
 
 	bower install https://github.com/vollyimnetz/imagepreload.git --save
+	
+or
+	npm install https://github.com/vollyimnetz/imagepreload.git --save
+
 
 ## How to use
 Add module to your app.
