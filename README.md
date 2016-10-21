@@ -1,13 +1,13 @@
-# imagepreload
+# angular-imagepreload
 Simple Angular directive for image preloading. You can pass a custom function to do what ever you want when the image is loaded.
 
 ## Install
 
-	bower install https://github.com/vollyimnetz/imagepreload.git --save
+	bower install https://github.com/vollyimnetz/angular-imagepreload.git --save
 	
 or
 
-	npm install https://github.com/vollyimnetz/imagepreload.git --save
+	npm install https://github.com/vollyimnetz/angular-imagepreload.git --save
 
 
 ## How to use
