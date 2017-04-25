@@ -42,6 +42,10 @@ This directive is ideal if you want to use preloading on a static background-ima
 
 	<imagepreload url="IMAGE_URL" loadcomplete="doSomething()"></imagepreload>
 
+There is also a additional property for adding a CSS-class to the parent element.
+
+	<imagepreload url="IMAGE_URL" addparentclass="loaded"></imagepreload>
+
 ### 4. Call a function
 You do not want to use a directive? Fine, use the function directly.
 

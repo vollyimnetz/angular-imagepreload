@@ -25,18 +25,25 @@ angular.module('totalmedial.imagePreload',[])
 }])
 
 /**
- * <imagepreload url="IMAGE_URL" loadcomplete="doSomething()"></imagepreload>
+ * <imagepreload url="IMAGE_URL" loadcomplete="doSomething()" addparentclass="optionalCssClass"></imagepreload>
  */
 .directive('imagepreload', ['imagePreload',function(imagePreload) {
 	return {
 		restrict: 'E',
 		scope : {
 			url : '@',
-			loadcomplete : '&'
+			loadcomplete : '&',
+			addparentclass : '@'
 		},
 		link: function(scope, element, attrs) {
+			var base = element[0];
 			imagePreload(scope.url).then(function(){
-				scope.loadcomplete();
+				if(scope.loadcomplete) {
+					scope.loadcomplete();
+				}
+				if(scope.addparentclass && scope.addparentclass.length>0 && base.parentNode) {
+					base.parentNode.className+= ' '+scope.addparentclass;
+				}
 			});
 		}
 	};
